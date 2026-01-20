@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문과생을 위한 AI 활용 파이썬 코딩 동계 워크숍</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 30px;
+        }
+        .section {
+            margin-bottom: 35px;
+        }
+        .section-title {
+            font-size: 1.3em;
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .info-table th, .info-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .info-table th {
+            background: #f8f9ff;
+            color: #667eea;
+            font-weight: 600;
+            width: 100px;
+            white-space: nowrap;
+        }
+        .apply-btn {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .apply-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95em;
+        }
+        .schedule-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 12px 10px;
+            text-align: center;
+        }
+        .schedule-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+        .schedule-table tr:hover {
+            background: #f8f9ff;
+        }
+        .schedule-table .day {
+            font-weight: 700;
+            color: #667eea;
+            white-space: nowrap;
+            text-align: center;
+        }
+        .schedule-table .topic {
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .schedule-table .instructor {
+            text-align: center;
+            white-space: nowrap;
+        }
+        .schedule-table .content-cell {
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.5;
+        }
+        .materials-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .materials-table th {
+            background: #f8f9ff;
+            color: #667eea;
+            padding: 10px;
+            text-align: center;
+        }
+        .materials-table td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+        .materials-table a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .materials-table a:hover {
+            text-decoration: underline;
+        }
+        .instructor-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .instructor-table th {
+            background: #f8f9ff;
+            color: #667eea;
+            padding: 12px;
+            text-align: center;
+        }
+        .instructor-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        .instructor-table .name {
+            font-weight: 700;
+            color: #333;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .footer {
+            background: #f8f9ff;
+            padding: 25px 30px;
+            text-align: center;
+        }
+        .footer p {
+            margin: 8px 0;
+            color: #666;
+        }
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .highlight {
+            background: linear-gradient(135deg, #667eea22 0%, #764ba222 100%);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.4em;
+            }
+            .content {
+                padding: 20px 15px;
+            }
+            .schedule-table, .instructor-table, .materials-table {
+                font-size: 0.85em;
+            }
+            .schedule-table td, .schedule-table th {
+                padding: 8px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐍 문과생을 위한 AI 활용 파이썬 코딩</h1>
+            <p>✨ 코딩 경험 없어도 OK! 생성형 AI와 함께하는 파이썬 입문 ✨</p>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">📌 개요</h2>
+                <table class="info-table">
+                    <tr>
+                        <th>수강대상</th>
+                        <td>생성형 AI를 활용해 파이썬 코딩을 완전기초부터 고급활용까지 경험하고 싶은 누구나 <span class="highlight">(무료)</span></td>
+                    </tr>
+                    <tr>
+                        <th>일시</th>
+                        <td>2026년 2월 9일(월) ~ 2월 13일(금), 오후 2시 ~ 5시</td>
+                    </tr>
+                    <tr>
+                        <th>장소</th>
+                        <td>경희대학교 청운관 401호</td>
+                    </tr>
+                    <tr>
+                        <th>정원</th>
+                        <td>55명 (선착순)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">📝 수강 신청</h2>
+                <a href="https://forms.gle/eSYeWwbe1w2sZLLVA" class="apply-btn" target="_blank">👉 신청하기 👈</a>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">📅 워크숍 시간표</h2>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>일자</th>
+                            <th>주제</th>
+                            <th>내용</th>
+                            <th>강사</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="day">1회차<br>(2/9 월)</td>
+                            <td class="topic">코딩의 기초 1</td>
+                            <td class="content-cell">생성형 AI를 활용한 코드 생성 소개<br>파이썬 기본 문법(변수, 자료형, 조건문, 반복문 등) 실습</td>
+                            <td class="instructor">이두황</td>
+                        </tr>
+                        <tr>
+                            <td class="day">2회차<br>(2/10 화)</td>
+                            <td class="topic">코딩의 기초 2</td>
+                            <td class="content-cell">파이썬 기본 문법(함수, 클래스 등) 실습</td>
+                            <td class="instructor">이두황</td>
+                        </tr>
+                        <tr>
+                            <td class="day">3회차<br>(2/11 수)</td>
+                            <td class="topic">AI와 챗봇</td>
+                            <td class="content-cell">AI 기술의 발전과 현황 소개(딥러닝, Transformer, LLM, 에이전트)<br>나만의 챗봇 구축과 작동 실습</td>
+                            <td class="instructor">이종혁</td>
+                        </tr>
+                        <tr>
+                            <td class="day">4회차<br>(2/12 목)</td>
+                            <td class="topic">웹크롤링</td>
+                            <td class="content-cell">파이썬 라이브러리 활용을 통한 웹 페이지 데이터 수집 실습</td>
+                            <td class="instructor">이문혁</td>
+                        </tr>
+                        <tr>
+                            <td class="day">5회차<br>(2/13 금)</td>
+                            <td class="topic">이미지·영상분석</td>
+                            <td class="content-cell">파이썬 코드를 활용한 Youtube 영상 정보 및 댓글 수집,<br>영상 다운로드, 이미지 프레임 추출 실습</td>
+                            <td class="instructor">이문혁</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">📂 강의 자료</h2>
+                <table class="materials-table">
+                    <thead>
+                        <tr>
+                            <th>회차</th>
+                            <th>주제</th>
+                            <th>자료</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1회차</td>
+                            <td>코딩의 기초 1</td>
+                            <td>추후 업로드</td>
+                        </tr>
+                        <tr>
+                            <td>2회차</td>
+                            <td>코딩의 기초 2</td>
+                            <td>추후 업로드</td>
+                        </tr>
+                        <tr>
+                            <td>3회차</td>
+                            <td>AI와 챗봇</td>
+                            <td>추후 업로드</td>
+                        </tr>
+                        <tr>
+                            <td>4회차</td>
+                            <td>웹크롤링</td>
+                            <td>추후 업로드</td>
+                        </tr>
+                        <tr>
+                            <td>5회차</td>
+                            <td>이미지·영상분석</td>
+                            <td>추후 업로드</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">👨‍🏫 강사 소개</h2>
+                <table class="instructor-table">
+                    <thead>
+                        <tr>
+                            <th>강사</th>
+                            <th>소속</th>
+                            <th>경력</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="name">이두황</td>
+                            <td>경희대 미디어학과 교수</td>
+                            <td>LG CNS 출신 · 〈코딩과 논리적 사고〉 강의</td>
+                        </tr>
+                        <tr>
+                            <td class="name">이종혁</td>
+                            <td>경희대 미디어학과 교수</td>
+                            <td>일간지 기자 출신 · 〈인공지능미디어코딩〉, 〈컴퓨테이셔널연구방법론〉, 〈데이터저널리즘〉 강의</td>
+                        </tr>
+                        <tr>
+                            <td class="name">이문혁</td>
+                            <td>경희대 미디어커뮤니케이션대학원 겸임교수</td>
+                            <td>방송 PD 출신 · 〈코딩의 기초와 이해〉, 〈비디오리터러시와 영상분석〉 강의</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>🏛️ 주최:</strong> 경희대학교 미디어커뮤니케이션대학원 · 미디어학과 · 일반대학원</p>
+            <p><strong>📮 문의:</strong> <a href="mailto:doohwangme@gmail.com">doohwangme@gmail.com</a></p>
+            <p><strong>🗳️ 수업 내 실시간 설문:</strong> <a href="https://jonghhhh-inclass-poll.hf.space/" target="_blank">https://jonghhhh-inclass-poll.hf.space/</a></p>
+        </div>
+    </div>
+</body>
+</html>
