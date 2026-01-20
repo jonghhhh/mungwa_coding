@@ -1,5 +1,5 @@
-name: 📝 워크숍 수강 신청
-description: 문과생을 위한 AI 활용 파이썬 코딩 동계 워크숍 수강 신청서
+name: "워크숍 수강 신청"
+description: "문과생을 위한 AI 활용 파이썬 코딩 동계 워크숍 수강 신청서"
 title: "[신청] "
 labels: ["수강신청"]
 body:
@@ -7,100 +7,100 @@ body:
     attributes:
       value: |
         ## 문과생을 위한 AI 활용 파이썬 코딩 동계 워크숍
-        **일시:** 2026년 2월 9일 ~ 2월 13일 오후 2시 ~ 5시
-        **장소:** 경희대학교 청운관 401호
+        **일시** 2026년 2월 9일 ~ 2월 13일 오후 2시 ~ 5시
+        **장소** 경희대학교 청운관 401호
         
         아래 정보를 입력해 주세요.
 
   - type: input
     id: name
     attributes:
-      label: 이름
-      description: 실명을 입력해 주세요
-      placeholder: 홍길동
+      label: "이름"
+      description: "실명을 입력해 주세요"
+      placeholder: "홍길동"
     validations:
       required: true
 
   - type: input
     id: email
     attributes:
-      label: 이메일
-      description: 연락 가능한 이메일 주소
-      placeholder: example@email.com
+      label: "이메일"
+      description: "연락 가능한 이메일 주소"
+      placeholder: "example@email.com"
     validations:
       required: true
 
   - type: input
     id: phone
     attributes:
-      label: 연락처
-      description: 휴대폰 번호
-      placeholder: 010-0000-0000
+      label: "연락처"
+      description: "휴대폰 번호"
+      placeholder: "010-0000-0000"
     validations:
       required: true
 
   - type: dropdown
     id: affiliation
     attributes:
-      label: 소속
-      description: 현재 소속을 선택해 주세요
+      label: "소속"
+      description: "현재 소속을 선택해 주세요"
       options:
-        - 경희대학교 학부생
-        - 경희대학교 대학원생
-        - 타 대학 학부생
-        - 타 대학 대학원생
-        - 기타
+        - "경희대학교 학부생"
+        - "경희대학교 대학원생"
+        - "타 대학 학부생"
+        - "타 대학 대학원생"
+        - "기타"
     validations:
       required: true
 
   - type: input
     id: department
     attributes:
-      label: 학과/전공
-      description: 소속 학과 또는 전공명
-      placeholder: 미디어학과
+      label: "학과/전공"
+      description: "소속 학과 또는 전공명"
+      placeholder: "미디어학과"
     validations:
       required: true
 
   - type: dropdown
     id: coding_experience
     attributes:
-      label: 코딩 경험
-      description: 프로그래밍/코딩 경험이 있으신가요?
+      label: "코딩 경험"
+      description: "프로그래밍/코딩 경험이 있으신가요?"
       options:
-        - 전혀 없음
-        - 조금 있음 (간단한 실습 경험)
-        - 보통 (수업 수강 경험)
-        - 많음 (프로젝트 경험)
+        - "전혀 없음"
+        - "조금 있음 (간단한 실습 경험)"
+        - "보통 (수업 수강 경험)"
+        - "많음 (프로젝트 경험)"
     validations:
       required: true
 
   - type: textarea
     id: motivation
     attributes:
-      label: 참여 동기
-      description: 워크숍에 참여하고자 하는 이유를 간단히 적어주세요
-      placeholder: 예) AI를 활용한 연구 방법을 배우고 싶습니다.
+      label: "참여 동기"
+      description: "워크숍에 참여하고자 하는 이유를 간단히 적어주세요"
+      placeholder: "AI를 활용한 연구 방법을 배우고 싶습니다."
     validations:
       required: true
 
   - type: checkboxes
     id: attendance
     attributes:
-      label: 참석 가능 일자
-      description: 참석 가능한 날짜를 모두 선택해 주세요
+      label: "참석 가능 일자"
+      description: "참석 가능한 날짜를 모두 선택해 주세요"
       options:
-        - label: 1회차 (2/9) - 코딩의 기초 1
-        - label: 2회차 (2/10) - 코딩의 기초 2
-        - label: 3회차 (2/11) - AI와 챗봇
-        - label: 4회차 (2/12) - 웹크롤링
-        - label: 5회차 (2/13) - 이미지·영상분석
+        - label: "1회차 (2/9) 코딩의 기초 1"
+        - label: "2회차 (2/10) 코딩의 기초 2"
+        - label: "3회차 (2/11) AI와 챗봇"
+        - label: "4회차 (2/12) 웹크롤링"
+        - label: "5회차 (2/13) 이미지 영상분석"
 
   - type: checkboxes
     id: agreement
     attributes:
-      label: 개인정보 수집 동의
-      description: 워크숍 운영을 위해 개인정보 수집에 동의해 주세요
+      label: "개인정보 수집 동의"
+      description: "워크숍 운영을 위해 개인정보 수집에 동의해 주세요"
       options:
-        - label: 개인정보 수집 및 이용에 동의합니다 (수집항목: 이름, 이메일, 연락처, 소속 / 목적: 워크숍 운영 및 안내 / 보유기간: 워크숍 종료 후 1개월)
+        - label: "개인정보 수집 및 이용에 동의합니다"
           required: true
