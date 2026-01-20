@@ -23,11 +23,9 @@
 
 <div align="center">
 
-### 👉 [**신청하기**](https://github.com/여기에-사용자이름/mungwa-coding/issues/new?template=registration.yml) 👈
+### 👉 [**신청하기**](https://forms.gle/여기에短縮URL) 👈
 
 </div>
-
-> ⚠️ **신청 링크 설정 방법**: 위 링크에서 `여기에-사용자이름`을 본인의 GitHub 사용자명으로 변경하세요.
 
 ---
 
